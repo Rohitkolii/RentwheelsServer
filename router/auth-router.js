@@ -10,3 +10,5 @@ router.route("/login").post(login)
 router.route("/user").get(authMiddleware, user)
 
 export default router
+
+// app.post("/api/users", upload.single("image"),

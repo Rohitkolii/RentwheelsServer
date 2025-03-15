@@ -2,13 +2,13 @@ import express from "express"
 import authRoute from "./router/auth-router.js"
 import connectDb from "./utils/db.js";
 import adminRoute from "./router/admin-router.js"
+import vehicleRoute from "./router/vehicle-router.js"
 import cors from "cors"
 const app = express();
 
 //Cors Error Handled
 const corsOptions = {
     origin: "http://localhost:5173",
-    // origin: "https://rentwheelss.vercel.app",
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     Credentials:true
 }
@@ -22,6 +22,11 @@ app.use("/api/auth", authRoute);
 app.use("/api/admin", adminRoute);
 
 
+//Vehicle Routes
+app.use("/uploads", express.static("uploads")); // Serve uploaded images
+app.use("/api/vehicle", vehicleRoute);
+
+  
 const PORT = 5000;
 connectDb().then(() => {
     app.listen(PORT, ()=> {
