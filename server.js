@@ -3,6 +3,7 @@ import authRoute from "./router/auth-router.js"
 import connectDb from "./utils/db.js";
 import adminRoute from "./router/admin-router.js"
 import vehicleRoute from "./router/vehicle-router.js"
+import bookingRoute from "./router/booking-router.js"
 import cors from "cors"
 const app = express();
 
@@ -26,6 +27,8 @@ app.use("/api/admin", adminRoute);
 app.use("/uploads", express.static("uploads")); // Serve uploaded images
 app.use("/api/vehicle", vehicleRoute);
 
+//Booking Routes
+app.use("/api/booking", bookingRoute);
   
 const PORT = 5000;
 connectDb().then(() => {

@@ -3,7 +3,7 @@ import User from "../models/user-model.js"
 const getAllUsers = async (req, res) => {
     try {
         const userslist = await User.find({}, {password:0});
-        console.log(userslist);
+        // console.log(userslist);
 
         if(!userslist){
             return res.status(404).json({message : "No Users Found"})

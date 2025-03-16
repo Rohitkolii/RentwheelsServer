@@ -7,16 +7,16 @@ import Vehicle from "../models/vehicles-model.js"
 //===============
 const createvehicle = async (req, res) => {
   try {
-    const { Vehicle_type, Vehicle_name, Vehicle_model, Vehicle_rent, Vehicle_average } = req.body;
+    const {user_name, user_id, Vehicle_type, Vehicle_name, Vehicle_model, Vehicle_rent, Vehicle_average } = req.body;
 
-    if (!Vehicle_type || !Vehicle_name || !Vehicle_model || !Vehicle_rent || !Vehicle_average || !req.file) {
+    if (!user_name || !user_id || !Vehicle_type || !Vehicle_name || !Vehicle_model || !Vehicle_rent || !Vehicle_average || !req.file) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
     const imagePath = `/uploads/${req.file.filename}`;
 
-    const newVehicle = new Vehicle({ Vehicle_type, Vehicle_name, Vehicle_model, Vehicle_rent, Vehicle_average ,Vehicle_image: imagePath });
-    await newVehicle.save();
+    const newVehicle = new Vehicle({user_name, user_id, Vehicle_type, Vehicle_name, Vehicle_model, Vehicle_rent, Vehicle_average, isBooked : false ,Vehicle_image: imagePath });
+    await newVehicle.save(); 
 
     res.status(201).json({ message: "Vehicle Added successfully", Vehicle: newVehicle });
   } catch (error) {
