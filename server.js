@@ -8,8 +8,9 @@ import cors from "cors"
 const app = express();
 
 //Cors Error Handled
+// origin: "https://rentwheelss.vercel.app",
 const corsOptions = {
-    origin: "https://rentwheelss.vercel.app",
+    origin: "http://localhost:5173",
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     Credentials:true
 }
