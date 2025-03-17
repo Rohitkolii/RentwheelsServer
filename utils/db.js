@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-const URI = "mongodb://127.0.0.1/rentwheels_db"
+// const URI = "mongodb://127.0.0.1/rentwheels_db"
+const URI = "mongodb+srv://rohitkoli:Rohitkoli@cluster0.g3taq.mongodb.net/rentwheels_db?retryWrites=true&w=majority&appName=Cluster0"
 
 
 const connectDb = async () => {
@@ -8,6 +9,8 @@ const connectDb = async () => {
         console.log("Connection Successfull");
     } catch (error) {
         console.error("database connection failed");
+        console.log(error);
+        
         process.exit(0)
     }
 }
