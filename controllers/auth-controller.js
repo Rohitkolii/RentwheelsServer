@@ -89,4 +89,9 @@ const user = async (req, res) => {
     }
 }
 
-export {home , register, login, user}
+const userDelete = async (req, res) => {
+    await User.findByIdAndDelete(req.params.id);
+    res.send('User deleted');
+};
+
+export {home , register, login, user, userDelete}

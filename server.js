@@ -4,13 +4,14 @@ import connectDb from "./utils/db.js";
 import adminRoute from "./router/admin-router.js"
 import vehicleRoute from "./router/vehicle-router.js"
 import bookingRoute from "./router/booking-router.js"
+// import dashboardRoute from "./router/dash-router.js"
 import cors from "cors"
 const app = express();
 
 //Cors Error Handled
+// origin: "https://rentwheelss.vercel.app",
 const corsOptions = {
-    // origin: "http://localhost:5173",
-    origin: "https://rentwheelss.vercel.app",
+    origin: "http://localhost:5173",
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     Credentials:true
 }
@@ -30,6 +31,9 @@ app.use("/api/vehicle", vehicleRoute);
 
 //Booking Routes
 app.use("/api/booking", bookingRoute);
+
+//Booking Routes
+// app.use("/api/dashboard", dashboardRoute);
   
 const PORT = 5000;
 connectDb().then(() => {

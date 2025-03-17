@@ -53,7 +53,17 @@ const getVehicleById = async (req, res) => {
   }
 };
 
+const vehicleDelete = async (req, res) => {
+    await Vehicle.findByIdAndDelete(req.params.id);
+    res.send('Vehicle deleted');
+};
 
-export {createvehicle, getVehicle, getVehicleById}
+// app.put('/users/:id',
+const vehicleStatusUpdate = async (req, res) => {
+  await Vehicle.findByIdAndUpdate(req.params.id, { isBooked: false });
+  res.send('Vehicle Status updated');
+};
+
+export {createvehicle, getVehicle, getVehicleById, vehicleDelete, vehicleStatusUpdate}
 
 
