@@ -94,4 +94,37 @@ const userDelete = async (req, res) => {
     res.send('User deleted');
 };
 
-export {home , register, login, user, userDelete}
+
+// Update user by ID
+
+    const updateUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const { username, email, phone, password, address, dlnumber, age, role } = req.body;
+
+        // Find the user by ID
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Create an update object
+        const updatedData = { username, email, phone, address, dlnumber, age, role };
+
+        // Check if the password is being updated
+        if (password) {
+            const salt = await bcrypt.genSalt(0);
+            updatedData.password = await bcrypt.hash(password, salt); // Hash new password
+        }
+
+        // Update user data in the database
+        const updatedUser = await User.findByIdAndUpdate(userId, updatedData, { new: true });
+
+        res.status(200).json({ message: "User updated successfully", updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: "Error updating user", error: error.message });
+    }
+};
+
+
+export {home , register, login, user, userDelete, updateUser}

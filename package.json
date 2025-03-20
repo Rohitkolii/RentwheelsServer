@@ -5,6 +5,7 @@
     "start": "node --watch server.js"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^6.1.0",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",

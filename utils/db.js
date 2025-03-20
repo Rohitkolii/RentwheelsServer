@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-const URI = "mongodb://127.0.0.1/rentwheels_db"
-// const URI = "mongodb+srv://rohitkoli:Rohitkoli112@cluster0.g3taq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+// const URI = "mongodb://127.0.0.1/rentwheels_db"
+const URI = "mongodb+srv://rohitkoli:Rohitkoli112@cluster0.g3taq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 
 const connectDb = async () => {
