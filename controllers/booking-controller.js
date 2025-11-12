@@ -50,12 +50,16 @@ const addBooking = async (req, res) => {
 
 const getBooking = async (req, res) => {
     try {
-      const bookingList = await Booking.find();
-    //   const bookingList = await Vehicle.find({}, "username age email image");
+      console.log("id", req.userId)
+      // const bookingList = await Booking.find();
+      const bookingList = await Booking.find({Booking_User_id : req.userId});
+      // const bookingList = await Vehicle.find({}, "username age email image");
+    console.log("Bookings", bookingList)
       res.json(bookingList);
     } catch (error) {
       res.status(500).json({ message: "Server error", error });
     }
+
 };
 
 

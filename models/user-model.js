@@ -41,7 +41,7 @@ userSchema.methods.generateToken = async function(){
             },
             "RENTWHEELSFULLSTACKPROJECT",
             {
-                expiresIn : "30d",
+                expiresIn : "1h",
             }
         );
     } catch (error) {

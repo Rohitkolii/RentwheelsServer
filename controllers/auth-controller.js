@@ -64,6 +64,7 @@ const login = async (req, res) => {
                 msg: "Login Successfull",
                 token: await userExist.generateToken(),
                 userId: userExist._id.toString(),
+                role: userExist.role
             })
         }else{
             res.status(401).json({message: "Invalid password"})
@@ -82,7 +83,7 @@ const login = async (req, res) => {
 const user = async (req, res) => {
     try {
         const userData = req.user; 
-        // console.log(userData);
+        console.log(userData);
         return res.status(200).json({userData})
     } catch (error) {
         console.log(`Error from the user route ${error}`);
@@ -127,4 +128,19 @@ const userDelete = async (req, res) => {
 };
 
 
-export {home , register, login, user, userDelete, updateUser}
+
+// Nav Count
+
+
+const userNavCount = async (req, res) => {
+    try {
+        const userData = req.user; 
+        console.log(userData);
+        return res.status(200).json({userData})
+    } catch (error) {
+        console.log(`Error from the user route ${error}`);
+    }
+}
+
+
+export {home , register, login, user, userDelete, updateUser, userNavCount}
